@@ -21,10 +21,7 @@ public class CarServiceController {
     public Car postCar(@RequestParam(value = "brand") String brand,
                        @RequestParam(value = "model") String model,
                        @RequestParam(value = "color") String color){
-        Car car = new Car();
-        car.setBrand(brand);
-        car.setModel(model);
-        car.setColor(color);
+        Car car = new Car(brand, model, color);
         return repo.save(car);
     }
 
@@ -33,11 +30,9 @@ public class CarServiceController {
                              @RequestParam(value = "model", required = false) String model,
                              @RequestParam(value = "color", required = false) String color){
 
-        Car car = new Car();
-        car.setBrand(brand);
-        car.setModel(model);
-        car.setColor(color);
+        Car car = new Car(brand, model, color);
         return repo.findAll(Example.of(car));
 
     }
+
 }
